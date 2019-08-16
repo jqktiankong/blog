@@ -15,6 +15,7 @@ func InitRouter() *gin.Engine {
 
 	gin.SetMode(setting.RunMode)
 
+	// 路由组/api/v1
 	apiv1 := r.Group("/api/v1")
 	{
 		//获取标签列表
