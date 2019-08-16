@@ -1,4 +1,5 @@
 package setting
+
 import (
 	"log"
 	"time"
@@ -11,14 +12,15 @@ var (
 
 	RunMode string
 
-	HTTPPort int
-	ReadTimeout time.Duration
+	HTTPPort     int
+	ReadTimeout  time.Duration
 	WriteTimeout time.Duration
 
-	PageSize int
+	PageSize  int
 	JwtSecret string
 )
 
+// 解析配置.ini文件
 func init() {
 	var err error
 	Cfg, err = ini.Load("gin_blog/conf/app.ini")
@@ -45,7 +47,7 @@ func LoadServer() {
 
 	HTTPPort = sec.Key("HTTP_PORT").MustInt(8000)
 	ReadTimeout = time.Duration(sec.Key("READ_TIMEOUT").MustInt(60)) * time.Second
-	WriteTimeout =  time.Duration(sec.Key("WRITE_TIMEOUT").MustInt(60)) * time.Second
+	WriteTimeout = time.Duration(sec.Key("WRITE_TIMEOUT").MustInt(60)) * time.Second
 }
 
 func LoadApp() {

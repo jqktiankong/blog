@@ -44,13 +44,15 @@ func init() {
 	if err != nil {
 		log.Println(err)
 	}
-
+	// 设置默认表名的命名规则
 	gorm.DefaultTableNameHandler = func(db *gorm.DB, defaultTableName string) string {
-		return tablePrefix + defaultTableName;
+		return tablePrefix + defaultTableName
 	}
-
+	// 关闭复数表名，如果设置为true，`User`表的表名就会是`user`，而不是`users`
 	db.SingularTable(true)
+	// 空闲连接池中的最大连接数
 	db.DB().SetMaxIdleConns(10)
+	// 数据库的最大打开连接数
 	db.DB().SetMaxOpenConns(100)
 }
 
